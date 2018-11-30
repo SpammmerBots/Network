@@ -3,6 +3,7 @@ const tpoints = {};
 const vpoints = {};
 const jimp = require("jimp");
 const moment = require('moment');
+const Canvas = require("canvas");
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -139,7 +140,7 @@ client.on("guildMemberAdd", member => {
 client.on('message', ( message ) => {
   if(message.author.bot) return;
 
-  if(message.channel.id !== '512674562044067860') return;
+  if(message.channel.id !== '513396752141910036') return;
 
 
   let types = [
@@ -178,7 +179,7 @@ client.on('message', ( message ) => {
 client.on('message', ( message ) => {
   if(message.author.bot) return;
 
-  if(message.channel.id !== '517174270229741604') return;
+  if(message.channel.id !== '517859600674848778') return;
 
 
   let types = [
@@ -216,7 +217,7 @@ client.on('message', ( message ) => {
 
 client.on("message", message => {
   var prefix = "g!";// البرفكس
-if(message.content.startsWith(prefix + "setwlc")) {
+if(message.content.startsWith(prefix + "asetwlc")) {
   let args = message.mentions.channels.first();
       if(!args) message.channel.send("** منشن روم . :x:**").then(m => {    
 m.delete(1500);
