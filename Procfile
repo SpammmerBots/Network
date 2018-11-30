@@ -1,0 +1,1 @@
+worker: RainbowRole.js
