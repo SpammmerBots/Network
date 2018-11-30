@@ -102,16 +102,16 @@ client.on("guildMemberAdd", member => {
                                                       //wl
                               ctx.font = '20px Arial Bold';
                               ctx.fontSize = '20px';
-                              ctx.fillStyle = "#FFFFFF";
+                              ctx.fillStyle = "#4c1130";
                               ctx.textAlign = "center";
                                                          ctx.fillText(member.user.username, 200, 190);
                               
                               //NAMEً
                               ctx.font = '19px Arial';
                               ctx.fontSize = '18px';
-                              ctx.fillStyle = "#FFFFFF";
+                              ctx.fillStyle = "#151f72";
                               ctx.textAlign = "center";
-      ctx.fillText(`Welcome To Mal Shop ♥ !!`
+      ctx.fillText(`..Wèlcomè » to » Mâl Shop..`
                               , 200, 155);
     welcomer.sendFile(canvas.toBuffer())
       
