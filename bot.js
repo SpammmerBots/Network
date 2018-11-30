@@ -298,7 +298,7 @@ client.on('message',async Qua => {
   }
 });/////Mal-Mahmoud-QuaStyle
 client.on('message', message => { 
-    if (message.content.startsWith(prefix + 'ranks')) {
+    if (message.content.startsWith(prefix + 'g!ranks')) {
 	        if(!message.channel.guild) return message.reply(' ');
 
         const Rank = message.guild.roles.map(e => e.toString()).join(" ");
