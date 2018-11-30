@@ -1,1 +1,1 @@
-worker: RainbowRole.js
+worker: bot.js
