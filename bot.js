@@ -297,21 +297,6 @@ client.on('message',async Qua => {
   });
   }
 });/////Mal-Mahmoud-QuaStyle
-client.on('message', message => { 
-    if (message.content.startsWith(prefix + 'g!ranks')) {
-	        if(!message.channel.guild) return message.reply(' ');
-
-        const Rank = message.guild.roles.map(e => e.toString()).join(" ");
-
-        const RankList = new Discord.RichEmbed()
-            .setTitle('➠ Roles.') 
-            .setAuthor(message.guild.name, message.guild.iconURL) 
-            .setColor('RANDOM') 
-            .setDescription(Rank) 
-            .setFooter(message.guild.name) 
-        message.channel.send(RankList) 
-    }
-});/////////Mal Team By:Mal Mahmoud-QuaStyle
 
 
 client.on('message', async message => {
