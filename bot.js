@@ -4,6 +4,7 @@ const vpoints = {};
 const jimp = require("jimp");
 const moment = require('moment');
 const Canvas = require("canvas");
+const fs = require('fs');
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -155,7 +156,7 @@ client.on('message', ( message ) => {
     .then(msg => {
       setTimeout(() => {
         msg.delete();
-      }, 5000)
+      }, 6000)
   })
   return;
 }
@@ -169,7 +170,7 @@ client.on('message', ( message ) => {
       .then(msg => {
         setTimeout(() => {
           msg.delete();
-        }, 5000)
+        }, 6000)
       })
     }
   }
