@@ -280,6 +280,70 @@ args.send({embed : embed});
 }
 });
 
+//
+client.on('message',async Qua => {
+  if(Qua.content.startsWith(prefix + "vo")) {
+  if(!Qua.guild.member(Qua.author).hasPermissions('MANAGE_CHANNELS')) return Qua.reply(':x: **ليس لديك الصلاحيات الكافية**');
+  if(!Qua.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return Epic.reply(':x: **ليس معي الصلاحيات الكافية**');
+  Qua.guild.createChannel(`Voice Online : [ ${Qua.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
+    console.log(`Voice Online Is Activation In ${Qua.guild.name}`);
+    c.overwritePermissions(Qua.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+    setInterval(() => {
+      c.setName(` Online :  ${Qua.guild.members.filter(m => m.voiceChannel).size} .`)
+    },1000);
+  });
+  }
+});/////Mal-Mahmoud-QuaStyle
+client.on('message', message => { 
+    if (message.content.startsWith(prefix + 'ranks')) {
+	        if(!message.channel.guild) return message.reply(' ');
+
+        const Rank = message.guild.roles.map(e => e.toString()).join(" ");
+
+        const RankList = new Discord.RichEmbed()
+            .setTitle('➠ Roles.') 
+            .setAuthor(message.guild.name, message.guild.iconURL) 
+            .setColor('RANDOM') 
+            .setDescription(Rank) 
+            .setFooter(message.guild.name) 
+        message.channel.send(RankList) 
+    }
+});/////////Mal Team By:Mal Mahmoud-QuaStyle
+
+
+client.on('message', async message => {
+            if(!message.channel.guild) return;
+             if (message.content.startsWith("maset")) {
+let args = message.content.split(' ').slice(1).join(' ');
+            let sigMessage = await args;
+            
+            if (sigMessage === "online") {
+                client.user.setStatus("online");
+                message.author.send("Your status was set to online.");
+            }
+            if (sigMessage === "idle") {
+                client.user.setStatus("idle");
+                message.author.send("Your status was set to idle.");
+            }
+            if (sigMessage === "invisible") {
+                client.user.setStatus("invisible");
+                message.author.send("Your status was set to invisible.");
+            }
+            if (sigMessage === "dnd") {
+                client.user.setStatus("dnd");
+                message.author.send("Your status was set to dnd.");
+            }
+            // message.author.send("." + message.content);
+        
+}
+});/////////3MK
+
+
+
+
 
 client.login(process.env.BOT_TOKEN);
 
