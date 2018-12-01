@@ -352,7 +352,7 @@ client.on('message',async message => {
 });
 ///////////////////////////////////////////////////////////////////////////
 const yourID = "411137717884289024";
-const setupCMD = "testroles"
+const setupCMD = "roles"
 let initialMessage = `**@everyone  rolereact**
 **React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
 const roles = ["GAY", "KID", "+18", "16-17", "funny", "zamel", "3nab", "bitch", "m3wa9", "singel"];//رتب
