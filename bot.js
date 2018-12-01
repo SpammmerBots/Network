@@ -326,7 +326,62 @@ let args = message.content.split(' ').slice(1).join(' ');
 }
 });/////////3MK
 
+client.on('message',async message => {
+  let args = message.content.split(" ").slice(1).join(" ");
+  let role = message.guild.roles.find('name',args) || message.guild.roles.get(args);
 
+
+  if(message.content.startsWith(prefix + "role-info")) {
+    if(!args) return message.reply('اكتب اسم الرتبة');
+    if(!role) return message.reply('هذه الرتبة غير موجودة');
+    let iQp = new Discord.RichEmbed()
+    .setAuthor(message.author.tag,message.author.avatarURL)
+    .setTitle(message.guild.name)
+    .setThumbnail(message.guild.iconURL)
+    .addField('- اسم الرتبة',role.name,true)
+    .addField('- اي دي الرتبة',role.id,true)
+    .addField('- تم انشاء الرتبة',role.createdAt.toLocaleString(),true)
+    .addField('- لون الرتبة',role.hexColor,true)
+    .addField('- عدد الاعضاء الذي لديهم نفس الرتبة',role.members.size,true)
+    .addField('- مركز الرتبة بين كل الرتب',role.position,true)
+    .addField('- خصائص الرتبة',role.permissions,true)
+    .setFooter(message.author.tag,message.author.avatarURL);
+
+    message.channel.send(iQp);
+  }
+});
+///////////////////////////////////////////////////////////////////////////
+const yourID = "411137717884289024";
+const setupCMD = "testroles"
+let initialMessage = `**@everyone  rolereact**
+**React to the messages below to get role. If you would like to remove the role remove your reaction!** `;
+const roles = ["GAY", "KID", "+18", "16-17", "funny", "zamel", "3nab", "bitch", "m3wa9", "singel"];//رتب
+const reactions = ["👬", "👶", "😊", "🔞", "😂", "😘", "🍇", "💋", "🙅", "💔"];//رياكشن
+
+if (roles.length !== reactions.length) throw "Roles list and reactions list are not the same length!";
+
+
+function generateMessages(){
+    var messages = [];
+    messages.push(initialMessage);
+    for (let role of roles) messages.push(`React below to get the **"${role}"** role!`); 
+    return messages;
+}
+
+
+client.on("message", message => {
+    if (message.author.id == yourID && message.content.toLowerCase() == setupCMD){
+        var toSend = generateMessages();
+        let mappedArray = [[toSend[0], false], ...toSend.slice(1).map( (message, idx) => [message, reactions[idx]])];
+        for (let mapObj of mappedArray){
+            message.channel.send(mapObj[0]).then( sent => {
+                if (mapObj[1]){
+                  sent.react(mapObj[1]);  
+                } 
+            });
+        }
+    }
+})
 
 
 
