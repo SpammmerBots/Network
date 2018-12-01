@@ -390,34 +390,46 @@ client.on('guildMemberRemove', member => {
     client.channels.get('518459886053359616').setName(`⟫『 ${botCount} عدد البوتات 』⟪`);
 });
 /////
- client.on('message', message => {
-     if(message.content.startsWith(prefix + "g")) {
-         var args = message.content.split(" ").slice(1);
- weather.find({search: args.join(" "), degreeType: 'C'}, function(err, result) {
-      if (err) message.channel.send(err);
-      if (result === undefined || result.length === 0) {
-          message.channel.send('**Please enter a location!**')
-          return;
-      }
-      var current = result[0].current;
-      var location = result[0].location;
-      const embed = new Discord.RichEmbed()
-          .setDescription(`**${current.skytext}**`)
-          .setAuthor(`Weather for ${current.observationpoint}`)
-          .setThumbnail(current.imageUrl)
-          .setColor(0x00AE86)
-          .addField('Timezone',`UTC${location.timezone}`, true)
-          .addField('Degree Type',location.degreetype, true)
-          .addField('Temperature',`${current.temperature} Degrees`, true)
-          .addField('Feels Like', `${current.feelslike} Degrees`, true)
-          .addField('Winds',current.winddisplay, true)
-          .addField('Humidity', `${current.humidity}%`, true)
-          message.channel.send({embed});
-  })
+var dat = JSON.parse(fs.readFileSync('./invite.json', 'utf8'));
+function forEachObject(obj, func) {
+    Object.keys(obj).forEach(function (key) { func(key, obj[key]) })
 }
- });
-  
-
+client.on("ready", () => {
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("506555643512225794")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            dat[Inv] = Invite.uses;
+        })
+    })
+})
+ client.on("guildMemberAdd", (member) => {
+    let channel = member.guild.channels.find('name', "☆-「chat");
+    if (!channel) {
+        console.log("!channel fails");
+        return;
+    }
+    if (member.id == client.user.id) {
+        return;
+    }
+    console.log('made it till here!');
+    var guild;
+    while (!guild)
+        guild = client.guilds.get("506555643512225794")
+    guild.fetchInvites().then((data) => {
+        data.forEach((Invite, key, map) => {
+            var Inv = Invite.code;
+            if (dat[Inv])
+                if (dat[Inv] < Invite.uses) {
+                    console.log(3);
+ channel.send(`${member} Joined By ${Invite.inviter}'s invite ${Invite.code} | invited by ${Invite.inviter}`)
+ }
+            dat[Inv] = Invite.uses;
+        })
+    })
+});
 
 
 client.login(process.env.BOT_TOKEN);
