@@ -1,6 +1,6 @@
 {
-  "token" : "Bot token goes here", هنا يعني
-  "ms" : 1500,
+  "token" : "Bot token goes here",/// هنا يعني
+  "ms" : 6000,
   "roleToDisco" : ["disco"], 
   "prefix" : "g!",
   "allowedUsers" : ["470602554611597315", "411137717884289024"] 
