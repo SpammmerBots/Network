@@ -1,5 +1,5 @@
 {
-  "token" : "Bot token goes here",/// هنا يعني
+  "token" : "Bot token goes here",
   "ms" : 6000,
   "roleToDisco" : ["disco"], 
   "prefix" : "g!",
