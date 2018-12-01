@@ -390,7 +390,6 @@ client.on('guildMemberRemove', member => {
     client.channels.get('518459886053359616').setName(`⟫『 ${botCount} عدد البوتات 』⟪`);
 });
 /////
-const weather = require('weather-js');
  client.on('message', message => {
      if(message.content.startsWith(prefix + "g")) {
          var args = message.content.split(" ").slice(1);
